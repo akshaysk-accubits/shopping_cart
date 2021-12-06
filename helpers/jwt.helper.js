@@ -22,10 +22,9 @@ module.exports = {
         expiresIn: process.env.REFRESH_TOKEN_EXPIRE,
       };
       const token = jwt.sign(payload, secret, options);
-      client.SET(userId, token, "EX", 365 * 24 * 60 * 60, (err, reply) => {
+      client.SET(userId, token,"EX", 365 * 24 * 60 * 60, (err, reply) => {
         if (err) {
-          console.log(err.message);
-          reject(createError.InternalServerError());
+          reject(createrror.InternalServerError());
           return;
         }
         resolve(token);

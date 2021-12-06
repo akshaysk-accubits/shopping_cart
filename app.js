@@ -11,7 +11,8 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use("/refresh", require("./routes/auth.Route"));
+app.use("/user", require("./routes/auth.route"));
+app.use("/admin", require("./routes/admin.route"));
 //* Error Handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500);

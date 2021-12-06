@@ -9,7 +9,7 @@ module.exports = {
      await queryInterface.bulkInsert('user', [{
       id:2,
       email:'admin@gmail.com',
-      password:'Aksh@15245',
+      password:'$2a$10$5sXv3CzUyu/FYVYOsI7lIeC8py0gjpj0oqM2gbin/GLAQwNoHKtD6',
       first_name: 'John',
       last_name:'wick',
       address:'wakanda',
@@ -22,11 +22,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
+    
   }
 };

@@ -1,4 +1,4 @@
-const sendMail = require("../../helpers/mail").sendMail;
+const {sendMail} = require("../../helpers/mail");
 const bcrypt = require("bcrypt");
 const models = require("../../models/index");
 const { emailExist, phoneNumberexist } = require("../user/user.service");

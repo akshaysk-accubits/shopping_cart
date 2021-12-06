@@ -7,7 +7,7 @@ const register = require('../modules/user/user.controller').register;
 
 router.post('/register',Validator("register"), register);
 
-router.post('/login', Validator("login"), AuthController.login)
+router.post('/login', Validator("login"), AuthController.adminLogin)
 
 router.post('/refresh-token', AuthController.refreshToken)
 
@@ -16,5 +16,7 @@ router.put("/changePassword", Validator("changePassword"), AuthController.change
 router.post("/forgotpassword", Validator("forgotPassword"), AuthController.forgotPassword);
 
 router.put("/resetPassword", Validator("resetPassword"), AuthController.resetPassword);
+
+router.delete('/logout', AuthController.logout)
 
 module.exports = router;
