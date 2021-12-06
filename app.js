@@ -2,11 +2,17 @@ const express = require("express");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
+const nodemailer = require("nodemailer");
+const morgan = require("morgan");
+require("dotenv").config();
+require("./helpers/redis");
+
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
+app.use("/user", require("./routes/auth.route"));
+app.use("/admin", require("./routes/admin.route"));
 //* Error Handler
 app.use((err, req, res, next) => {
   res.status(err.status || 500);

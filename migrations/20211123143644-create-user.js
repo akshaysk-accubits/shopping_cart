@@ -30,7 +30,7 @@ module.exports = {
         allowNull: false,
       },
       phone_number: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         allowNull: false,
         unique: true,
       },
@@ -46,6 +46,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
+      
     });
     await queryInterface.createTable("products", {
       id: {
