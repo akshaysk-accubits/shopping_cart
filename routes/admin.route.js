@@ -5,6 +5,8 @@ const Validator = require("../middlewares/validation");
 const {register} = require('../modules/user/user.controller');
 const productController = require('../modules/products/product.controller');
 const {adminvalidateToken} = require('../middlewares/admin.validateToken');
+const {upload} = require('../middlewares/uploadFile');
+const cartController = require('../modules/cart/cart.controller');
 
 router.post('/register',Validator("register"), register);
 
