@@ -22,16 +22,16 @@ module.exports = {
       }
       const user = await userExist(email);
       const type = await user.user_type;
-      if (type !== 1){
+      if (type !== 1) {
         return next(createHttpError.BadRequest("Invalid User"));
       }
       if (!user) throw createHttpError.NotFound("User not registered");
       if (user) {
         const result = await bcrypt.compare(password, user.password);
         if (result) {
-          const accessToken = await signAccessToken(user.id);
+          const accessToken = await signAccessToken(user.id, type);
 
-          const refreshToken = await signRefreshToken(user.id);
+          const refreshToken = await signRefreshToken(user.id, type);
           res
             .status(200)
             .json({ message: "Login successfull!", accessToken, refreshToken });
@@ -54,16 +54,16 @@ module.exports = {
       }
       const user = await userExist(email);
       const type = await user.user_type;
-      if (type !== 2){
+      if (type !== 2) {
         return next(createHttpError.BadRequest("Invalid User"));
       }
       if (!user) throw createHttpError.NotFound("User not registered");
       if (user) {
         const result = await bcrypt.compare(password, user.password);
         if (result) {
-          const accessToken = await signAccessToken(user.id);
+          const accessToken = await signAccessToken(user.id, type);
 
-          const refreshToken = await signRefreshToken(user.id);
+          const refreshToken = await signRefreshToken(user.id, type);
           res
             .status(200)
             .json({ message: "Login successfull!", accessToken, refreshToken });

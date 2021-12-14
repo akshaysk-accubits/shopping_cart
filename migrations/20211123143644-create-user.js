@@ -69,7 +69,7 @@ module.exports = {
       },
       stock_quantity: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: false,    
       },
       created_at: {
         allowNull: false,

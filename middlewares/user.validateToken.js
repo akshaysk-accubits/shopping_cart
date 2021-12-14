@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const createHttpError = require("http-errors");
 
-const adminvalidateToken = async (req, res, next) => {
+const uservalidateToken = async (req, res, next) => {
   const authorizationHeaader = req.headers.authorization;
   let result;
   if (authorizationHeaader) {
@@ -13,7 +13,7 @@ const adminvalidateToken = async (req, res, next) => {
       result = jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, options);
       req.decoded = result;
       const type = await result.type;
-      if (type !== 2) {
+      if (type !== 1) {
         return next(createHttpError.BadRequest("Invalid User"));
       }
       next();
@@ -30,4 +30,4 @@ const adminvalidateToken = async (req, res, next) => {
   }
 };
 
-module.exports = { adminvalidateToken };
+module.exports = { uservalidateToken };

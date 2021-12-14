@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router()
 const AuthController = require('../modules/auth/auth.controller')
 const Validator = require("../middlewares/validation");
-const register = require('../modules/user/user.controller').register;
-const addProducts = require('../modules/auth/addProduts').addProducts
-const adminvalidateToken = require('../middlewares/admin.validateToken').adminvalidateToken
+const {register} = require('../modules/user/user.controller');
+const productController = require('../modules/products/product.controller');
+const {adminvalidateToken} = require('../middlewares/admin.validateToken');
 
 router.post('/register',Validator("register"), register);
 
@@ -18,7 +18,15 @@ router.post("/forgotpassword", Validator("forgotPassword"), AuthController.forgo
 
 router.put("/resetPassword", Validator("resetPassword"), AuthController.resetPassword);
 
-router.post('/addProducts', adminvalidateToken, addProducts)
+router.post('/addProducts', adminvalidateToken,  productController.addProducts);
+
+router.post('/getProducts', adminvalidateToken,Validator("searchProducts"), productController.getProducts);
+
+router.put("/productStatus" , adminvalidateToken, productController.productStatus);
+
+router.put("/productQuantity" , adminvalidateToken, productController.productQuantity);
+
+router.put("/productPrice" , adminvalidateToken, productController.productPrice);
 
 router.delete('/logout', AuthController.logout)
 

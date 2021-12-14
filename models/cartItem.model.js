@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
     {
       sequelize,
       modelName: "cartItem",
+      freezeTableName: true,
+      underscored: true,
     }
   );
   return cartItem;
