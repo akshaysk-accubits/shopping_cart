@@ -9,6 +9,7 @@ const {
   activeProducts,
   searchList,
   historyUpdate,
+  priceHistoryUpdate,
   priceUpdate,
 } = require("../products/product.service");
 
@@ -23,10 +24,6 @@ module.exports = {
         status,
         stock_quantity,
       });
-      // if (req.file) {
-      //   userData.profileImage = req.file.filename;
-      //   logger.info("req.file", req.file);
-      // }
       return res.status(200).json({
         message: "product added",
       });
@@ -153,7 +150,7 @@ module.exports = {
       const prodId = idExist.id;
       if (idExist) {
         const priceEdit = await priceUpdate(price, prodId);
-
+        const priceHistory = await priceHistoryUpdate(price, prodId);
         return res.json({ message: "price updated!" });
       } else {
         res.status(400).json({

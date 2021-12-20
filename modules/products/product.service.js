@@ -54,6 +54,13 @@ const historyUpdate = async (quantity, prodId) => {
   });
 };
 
+const priceHistoryUpdate = async (price, prodId) => {
+  return models.history.create({
+    price_history: price,
+    products_id: prodId,
+  });
+};
+
 const quantityUpdate = async (quantity, prodId) => {
   return models.products.update(
     { stock_quantity: quantity },
@@ -72,6 +79,7 @@ module.exports = {
   Idcheck,
   quantityUpdate,
   historyUpdate,
+  priceHistoryUpdate,
   priceUpdate,
   searchList,
 };
