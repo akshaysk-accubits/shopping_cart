@@ -32,8 +32,6 @@ router.put("/cartUpdate", uservalidateToken, cartController.cartUpdate);
 
 router.delete('/cartDelete', uservalidateToken, cartController.cartDelete);
 
-router.post('/addOrders', uservalidateToken, orderController.addOrders);
-
 router.delete('/logout', AuthController.logout);
 
 module.exports = router;
