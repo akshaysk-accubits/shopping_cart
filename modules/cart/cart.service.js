@@ -7,7 +7,9 @@ const Idcheck = async (productId) => {
 const cartProducts = async (limit, skip) => {
   return models.cartItem.findAndCountAll({include: [{
      model: models.products,
-   }]},{
+   }]},
+   {attributes: ["name", "desc", "price", "status", "stock_quantity"]}
+   ,{
     limit: limit,
     skip: skip,
   });
