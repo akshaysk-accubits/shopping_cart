@@ -6,6 +6,7 @@ const {register} = require('../modules/user/user.controller');
 const productController = require('../modules/products/product.controller');
 const {uservalidateToken} = require('../middlewares/user.validateToken');
 const cartController = require('../modules/cart/cart.controller');
+const orderController = require('../modules/orderItems/orderItems.controller');
 
 router.post('/register',Validator("register"), register);
 
@@ -30,6 +31,8 @@ router.post('/getCartItems', uservalidateToken,Validator("searchProducts"), cart
 router.put("/cartUpdate", uservalidateToken, cartController.cartUpdate);
 
 router.delete('/cartDelete', uservalidateToken, cartController.cartDelete);
+
+router.post('/addOrders', uservalidateToken, orderController.addOrders);
 
 router.delete('/logout', AuthController.logout);
 
