@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "make-model": "npx sequelize-cli model:generate --name edit --attributes firstName:string,lastName:string,email:string",
+    "make-model": "npx sequelize-cli model:generate --name History --attributes desc:string",
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "npx sequelize-cli db:migrate",
     "down": "npx sequelize-cli db:migrate:undo",

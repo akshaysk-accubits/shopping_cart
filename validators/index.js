@@ -3,6 +3,7 @@ const login = require("./login.validator");
 const changePassword = require("../validators/changePassword.validator");
 const forgotPassword = require("../validators/forgotPassword.validator");
 const resetPassword = require("../validators/resetPassword.validator");
+const searchProducts = require("./searchProducts.validator");
 
 module.exports = {
   register,
@@ -10,4 +11,5 @@ module.exports = {
   changePassword,
   forgotPassword,
   resetPassword,
+  searchProducts
 };
